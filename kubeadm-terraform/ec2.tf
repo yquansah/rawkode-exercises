@@ -45,7 +45,7 @@ resource "aws_instance" "kubeadm_instance" {
 
   vpc_security_group_ids = [aws_security_group.kubeadm_security_group.id]
 
-  user_data = file("scripts/init.sh")
+  user_data = file("scripts/init.yaml")
 
   tags = {
     Name = "kubeadm-instance"
