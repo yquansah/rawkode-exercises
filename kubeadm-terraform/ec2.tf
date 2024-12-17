@@ -35,7 +35,8 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "kubeadm_instance" {
-  ami = data.aws_ami.ubuntu.id
+  count = 2
+  ami   = data.aws_ami.ubuntu.id
 
   subnet_id = aws_subnet.kubeadm_public_subnet.id
 
@@ -48,6 +49,6 @@ resource "aws_instance" "kubeadm_instance" {
   user_data = file("scripts/init.yaml")
 
   tags = {
-    Name = "kubeadm-instance"
+    Name = "kubeadm-${count.index}"
   }
 }
