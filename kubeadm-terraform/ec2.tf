@@ -38,7 +38,7 @@ resource "aws_instance" "kubeadm_instance" {
   count = 2
   ami   = data.aws_ami.ubuntu.id
 
-  subnet_id = aws_subnet.kubeadm_public_subnet.id
+  subnet_id = aws_subnet.kubeadm_public_subnet[0].id
 
   instance_type = "t3.medium"
 
