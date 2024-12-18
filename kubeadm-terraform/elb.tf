@@ -32,8 +32,6 @@ resource "aws_lb" "kubeadm_elb" {
   security_groups    = [aws_security_group.kubeadm_alb_security_group.id]
   subnets            = [for subnet in aws_subnet.kubeadm_public_subnet : subnet.id]
 
-  enable_deletion_protection = true
-
   tags = {
     Environment = "production"
   }
